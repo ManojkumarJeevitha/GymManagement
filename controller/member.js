@@ -5,7 +5,7 @@ class MemberController {
     async add(farm){
 		try{
 			let response = await memberSchema.create(farm);
-			return { status: "success",   msg:"Member Added successfully", result: response };
+			return { status: "success",   msg:"member Added successfully", result: response };
 		} catch(error){
 			return {
 				status: "error",
