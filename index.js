@@ -4,7 +4,6 @@ const port = 8001 || process.env.PORT;
 const cors = require("cors");
 const app = express();
 const proxy = require("express-http-proxy");
-const paths = require("./config");
 const fs = require('fs');
 const axios = require('axios');
 const { config } = require("dotenv");
