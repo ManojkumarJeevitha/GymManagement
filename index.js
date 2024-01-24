@@ -33,11 +33,6 @@ app.use(
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: false }));
 
-paths.forEach((element) => {
-  app.use(`/api/${element.service}`, proxy(`${element.host}`));
-});
-
-
 
 const middleware = require('./middleware/middleware');
 const { Console } = require("console");
