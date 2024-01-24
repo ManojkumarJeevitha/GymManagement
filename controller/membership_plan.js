@@ -1,11 +1,11 @@
-const serviceSchema = require('../model/service');
+const membersplanSchema = require('../model/membership_plan');
 const errorHandler = require('../utils/error.handler');
 
-class ServiceController {
+class PlanController {
     async add(farm){
 		try{
-			let response = await serviceSchema.create(farm);
-			return { status: "success",   msg:"Service Added successfully", result: response };
+			let response = await membersplanSchema.create(farm);
+			return { status: "success",   msg:"Plan Added successfully", result: response };
 		} catch(error){
 			return {
 				status: "error",
@@ -16,9 +16,7 @@ class ServiceController {
 	
 	async fetch(){
 		try{
-
-            
-			let response = await serviceSchema.find({});
+			let response = await membersplanSchema.find({});
 			let count=Object.keys(response).length;
 			return {
 				response: response,
@@ -35,7 +33,7 @@ class ServiceController {
 
 	async fetchdata(id){
 		try{
-			let response = await serviceSchema.find({_id:id});
+			let response = await membersplanSchema.find({businessId:id});
 			return response;	
 		} catch(error){
 			return {
@@ -47,7 +45,7 @@ class ServiceController {
 
 	async delete(id){
 		try{
-			let response = await serviceSchema.deleteOne({_id: id});
+			let response = await membersplanSchema.deleteOne({_id: id});
 			return {
 				status: "success",
 				response: response
@@ -61,10 +59,9 @@ class ServiceController {
 	}
 
 	async update(id, body) {
-
         try {
-            let response = await serviceSchema.update({_id: id}, body);
-            return { status: "success", msg:"Service Updated successfully",result: response };
+            let response = await membersplanSchema.update({_id: id}, body);
+            return { status: "success", msg:"Plan Updated successfully",result: response };
 
         } catch (error) {
             return { status: "error", error: error };
@@ -76,4 +73,4 @@ class ServiceController {
 
        
 
-module.exports=new ServiceController();
+module.exports=new PlanController();

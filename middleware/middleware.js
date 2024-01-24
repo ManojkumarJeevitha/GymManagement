@@ -7,11 +7,11 @@ const cors = require('cors');
 server.use(cors());
 //locationdata
 
-const businessRouter = require('./../router/business');
-const merchantRouter = require('./../router/merchant');
-const serviceRouter = require('./../router/service');
+const businessRouter = require('../router/member');
+const merchantRouter = require('../router/membership_plan');
+const serviceRouter = require('../router/payment_transaction');
 
- let db= process.env.MONGODB_URL ||`mongodb+srv://admin:1234@hoffensoft.ohofpb5.mongodb.net/?retryWrites=true&w=majority`;
+ let db= process.env.MONGODB_URL ||`mongodb+srv://admin:1234@gym.g29osw3.mongodb.net/?retryWrites=true&w=majority`;
 
 console.log('connected to the database',db);
 

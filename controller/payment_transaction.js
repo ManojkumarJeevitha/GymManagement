@@ -1,11 +1,11 @@
-const businessSchema = require('../model/business');
+const paymentTransactionschema = require('../model/payment_transaction');
 const errorHandler = require('../utils/error.handler');
 
-class BusinessController {
+class PaymentController {
     async add(farm){
 		try{
-			let response = await businessSchema.create(farm);
-			return { status: "success",   msg:"Business Added successfully", result: response };
+			let response = await paymentTransactionschema.create(farm);
+			return { status: "success",   msg:"Payment Added successfully", result: response };
 		} catch(error){
 			return {
 				status: "error",
@@ -18,7 +18,7 @@ class BusinessController {
 		try{
 
             
-			let response = await businessSchema.find({});
+			let response = await paymentTransactionschema.find({});
 			let count=Object.keys(response).length;
 			return {
 				response: response,
@@ -35,7 +35,7 @@ class BusinessController {
 
 	async fetchdata(id){
 		try{
-			let response = await businessSchema.find({_id:id});
+			let response = await paymentTransactionschema.find({_id:id});
 			return response;	
 		} catch(error){
 			return {
@@ -47,7 +47,7 @@ class BusinessController {
 
 	async delete(id){
 		try{
-			let response = await businessSchema.deleteOne({_id: id});
+			let response = await paymentTransactionschema.deleteOne({_id: id});
 			return {
 				status: "success",
 				response: response
@@ -63,8 +63,8 @@ class BusinessController {
 	async update(id, body) {
 
         try {
-            let response = await businessSchema.update({_id: id}, body);
-            return { status: "success", msg:"Business Updated successfully",result: response };
+            let response = await paymentTransactionschema.update({_id: id}, body);
+            return { status: "success", msg:"Payment Updated successfully",result: response };
 
         } catch (error) {
             return { status: "error", error: error };
@@ -76,4 +76,4 @@ class BusinessController {
 
        
 
-module.exports=new BusinessController();
+module.exports=new PaymentController();

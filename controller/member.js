@@ -1,11 +1,11 @@
-const merchantSchema = require('../model/merchant');
+const memberSchema = require('../model/member');
 const errorHandler = require('../utils/error.handler');
 
-class BusinessController {
+class MemberController {
     async add(farm){
 		try{
-			let response = await merchantSchema.create(farm);
-			return { status: "success",   msg:"Merchant Added successfully", result: response };
+			let response = await memberSchema.create(farm);
+			return { status: "success",   msg:"Member Added successfully", result: response };
 		} catch(error){
 			return {
 				status: "error",
@@ -16,7 +16,8 @@ class BusinessController {
 	
 	async fetch(){
 		try{
-			let response = await merchantSchema.find({});
+
+			let response = await memberSchema.find({});
 			let count=Object.keys(response).length;
 			return {
 				response: response,
@@ -33,7 +34,7 @@ class BusinessController {
 
 	async fetchdata(id){
 		try{
-			let response = await merchantSchema.find({businessId:id});
+			let response = await memberSchema.find({_id:id});
 			return response;	
 		} catch(error){
 			return {
@@ -45,7 +46,7 @@ class BusinessController {
 
 	async delete(id){
 		try{
-			let response = await merchantSchema.deleteOne({_id: id});
+			let response = await memberSchema.deleteOne({_id: id});
 			return {
 				status: "success",
 				response: response
@@ -59,19 +60,17 @@ class BusinessController {
 	}
 
 	async update(id, body) {
-
         try {
-            let response = await merchantSchema.update({_id: id}, body);
-            return { status: "success", msg:"Merchant Updated successfully",result: response };
+            let response = await memberSchema.update({_id: id}, body);
+            return { status: "success", msg:"Member Updated successfully",result: response };
 
         } catch (error) {
             return { status: "error", error: error };
         }
-
     }
 	
 }
 
        
 
-module.exports=new BusinessController();
+module.exports=new MemberController();

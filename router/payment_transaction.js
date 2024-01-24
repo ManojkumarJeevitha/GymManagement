@@ -1,24 +1,24 @@
 const router = require('express').Router();
-const serviceController = require('../controller/service');
+const transactionController = require('../controller/payment_transaction');
 
 
 router.post('/add', async (req, res) => {
-    res.send(await serviceController.add(req.body));
+    res.send(await transactionController.add(req.body));
 });
 router.get('/', async (req, res) => {
-    res.send(await serviceController.fetch());
+    res.send(await transactionController.fetch());
 });
 router.get('/fetchlservice', async (req, res) => {
 	res.setHeader('Access-Control-Allow-Origin', '*');
-	const response = await serviceController.fetchdata(req.query.id);
+	const response = await transactionController.fetchdata(req.query.id);
 	res.send(response);
 })
 router.delete('/delete', async (req, res) => {
-	const response = await serviceController.delete(req.query.id);
+	const response = await transactionController.delete(req.query.id);
 	res.send(response);
 })
 router.put('/update', async (req, res) => {
-	const response = await serviceController.update(req.query.id, req.body);
+	const response = await transactionController.update(req.query.id, req.body);
 	res.send(response);
 })
 
