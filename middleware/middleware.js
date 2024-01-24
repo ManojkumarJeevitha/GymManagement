@@ -7,9 +7,9 @@ const cors = require('cors');
 server.use(cors());
 //locationdata
 
-const businessRouter = require('../router/member');
-const merchantRouter = require('../router/membership_plan');
-const serviceRouter = require('../router/payment_transaction');
+const memberRouter = require('../router/member');
+const planRouter = require('../router/membership_plan');
+const paymentRouter = require('../router/payment_transaction');
 
  let db= process.env.MONGODB_URL ||`mongodb+srv://admin:1234@gym.g29osw3.mongodb.net/?retryWrites=true&w=majority`;
 
@@ -29,9 +29,9 @@ mongoose.connect(db, {
         }
 	});
 
-server.use("/business", businessRouter);
-server.use("/merchant", merchantRouter);
-server.use("/service", serviceRouter);
+server.use("/member", memberRouter);
+server.use("/plan", planRouter);
+server.use("/payment", paymentRouter);
 
 
 module.exports= server;
